@@ -1,3 +1,4 @@
 django
+django-stubs
 mypy
 autopep8
