@@ -2,6 +2,10 @@
 
 {{ top_layout | safe}}
 
-<h1>Dotazník</h1>
+<h1>Dotazníky</h1>
+
+{% for survey in surveys %}
+    <a href="/survey/{{ survey.id }}"> {{ survey.name }} </a>
+{% endfor %}
 
 </html>
