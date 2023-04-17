@@ -1,13 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import InfoBlock, Information
+import top_layout
 
 
 # Create your views here.
 def index(request) -> HttpResponse:
-    out = ''
     blocks = InfoBlock.objects.all()
-    for block in blocks:
-        out += f'<h1>{block.block_name}</h1><br>'
+    infos: dict[InfoBlock, list[Information]] = {}
 
-    return HttpResponse(out)
+    for block in blocks:
+        infos[block] = []
+        infos[block].extend(Information.objects.filter(block=block))
+
+    # return HttpResponse(out)
+    context = {'infos': infos, 'top_layout': top_layout.get()}
+    return render(request, 'information/index.html', context)

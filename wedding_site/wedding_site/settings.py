@@ -31,6 +31,7 @@ ALLOWED_HOSTS: list[str] = []
 # Application definition
 
 INSTALLED_APPS = [
+    'survey.apps.SurveyConfig',
     'intro.apps.IntroConfig',
     'information.apps.InformationConfig',
     'django.contrib.admin',

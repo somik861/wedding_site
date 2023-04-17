@@ -5,7 +5,7 @@ from django.db.models import CharField, TextField, ForeignKey, Model
 
 
 class InfoBlock(Model):
-    block_name: CharField = CharField(max_length=255)
+    name: CharField = CharField(max_length=255)
 
 
 class Information(Model):
