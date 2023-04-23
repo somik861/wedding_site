@@ -1,8 +1,8 @@
 <html>
 
-
 {{ top_layout | safe}}
 
+<div class='div_body'>
 <h1>Information</h1>
 
 {% for block, infolist in infos.items %}
@@ -12,5 +12,6 @@
         <p>{{ info.text }}</p>
     {% endfor %}
 {% endfor %}
+</div>
 
 </html>

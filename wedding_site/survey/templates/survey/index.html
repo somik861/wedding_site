@@ -2,10 +2,12 @@
 
 {{ top_layout | safe}}
 
+<div class='div_body'>
 <h1>Dotazníky</h1>
 
 {% for survey in surveys %}
     <a href="/survey/{{ survey.id }}"> {{ survey.name }} </a>
 {% endfor %}
+</div>
 
 </html>

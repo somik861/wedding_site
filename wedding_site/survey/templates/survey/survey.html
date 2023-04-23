@@ -2,7 +2,10 @@
 
 {{ top_layout | safe}}
 
-<h1> {{ survey.name }} </h1>
+<div class='div_body'>
+<a href='/survey/' style='float:right;'>Výběr dotazníků</a>
+<h1> {{ survey.name }} </h1> 
+
 
 <p style='color:red;font-size:150%'> {{ prefilled.form_error }} </p>
 
@@ -78,8 +81,10 @@
 <br>
 <br>
 
-<input type='submit' value='Odeslat' name='submit'>
+<input type='submit' value='Odeslat' name='send'>
+<input type='submit' value='Nahrát' name='load'>
 <form>
+</div>
 
 
 </html>
