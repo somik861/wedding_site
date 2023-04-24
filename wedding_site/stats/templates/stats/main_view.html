@@ -1,0 +1,14 @@
+<html>
+
+<h1>Main view</h1>
+<h2>Respondenti</h2>
+{% for respondent in respondents %}
+    <a href="/stats/respondent/{{respondent.id}}">{{respondent.full_name}}</a><br>
+{% endfor %}
+
+<h2>Dotazníky</h2>
+{% for survey in surveys %}
+    <a href="/stats/survey/{{survey.id}}">{{survey.name}}</a><br>
+{% endfor %}
+
+</html>

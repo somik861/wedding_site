@@ -1,0 +1,41 @@
+<html>
+
+<h1> {{ respondent.full_name }} </h1>
+
+{% for survey in surveys %}
+    <h2>Survey: {{survey.name}} </h2>
+    {% for question in questions|get_item:survey.id %}
+    {{ question.text }} 
+    <div style='padding-left:20px'>
+        {% for answer in answers|get_item:question.id %}
+            {{ answer.answer_dt }}:&nbsp&nbsp
+            {% if question.answer_type == 'rating' %}
+                {{ answer.value }}
+            {% elif question.answer_type == 'text' %}
+                <p style='padding-left:20px;'> {{ answer.value }}</p>
+            {% elif question.answer_type == 'yes_no' %}
+                {% if answer.value %}
+                    Ano
+                {% else %}
+                    Ne
+                {% endif %}
+
+            {% elif question.answer_type == 'yes_no_dc' %}
+                {% if answer.value %}
+                    Ano
+                {% elif answer.value is None %}
+                    Je mi to jedno
+                {% else %}
+                    Ne
+                {% endif %}
+            {% else %}
+                Unknown
+            {% endif %}
+            <br>
+        {% endfor %}
+        <br>
+    </div>
+    {% endfor %}
+
+{% endfor %}
+</html>

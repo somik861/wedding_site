@@ -4,11 +4,11 @@ import top_layout
 from .models import Survey, SurveyQuestion, TextAnswer, RatingAnswer, YesNoAnswer, YesNoDcAnswer, Answer, Respondent
 from django.views.decorators.csrf import csrf_protect
 from django.template.defaulttags import register
-from datetime import datetime
+from django.utils import timezone
 
 
 @register.filter
-def get_item(dct, key):
+def get_form_item(dct, key):
     return dct.get(str(key), '')
 
 
@@ -127,21 +127,21 @@ def save_survey(request: HttpRequest, survey_id: int) -> None:
                 answ = RatingAnswer(
                     question=question,
                     respondent=resp,
-                    answer_dt=datetime.now(),
+                    answer_dt=timezone.now(),
                     value=int(value),
                 )
             case SurveyQuestion.AnswerType.TEXT:
                 answ = TextAnswer(
                     question=question,
                     respondent=resp,
-                    answer_dt=datetime.now(),
+                    answer_dt=timezone.now(),
                     value=value,
                 )
             case SurveyQuestion.AnswerType.YES_NO:
                 answ = YesNoAnswer(
                     question=question,
                     respondent=resp,
-                    answer_dt=datetime.now(),
+                    answer_dt=timezone.now(),
                     value=value == 'Yes',
                 )
             case SurveyQuestion.AnswerType.YES_NO_DC:
@@ -155,7 +155,7 @@ def save_survey(request: HttpRequest, survey_id: int) -> None:
                 answ = YesNoDcAnswer(
                     question=question,
                     respondent=resp,
-                    answer_dt=datetime.now(),
+                    answer_dt=timezone.now(),
                     value=val,
                 )
 

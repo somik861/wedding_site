@@ -18,7 +18,7 @@
         {% for rate in possible_rates %}
             <label for="{{ question.id }}_{{rate}}">{{ rate }}</label>
             <input id="{{ question.id }}_{{rate}}" type='radio' name={{ question.id }} value={{ rate }}
-            {% if prefilled|get_item:question.id == rate %}
+            {% if prefilled|get_form_item:question.id == rate %}
                 checked='checked'
             {% endif %}
             >
@@ -26,18 +26,18 @@
         {% endfor %}   
 
     {% elif question.answer_type == 'text' %}
-        <textarea name={{ question.id }} rows='1' cols='35' form_id="form_{{survey.id}}">{{ prefilled|get_item:question.id }}</textarea> 
+        <textarea name={{ question.id }} rows='1' cols='35' form_id="form_{{survey.id}}">{{ prefilled|get_form_item:question.id }}</textarea> 
     {% elif question.answer_type == 'yes_no' %}
         <label for="{{ question.id }}_yes">Ano</label>
         <input id="{{ question.id }}_yes" type='radio' name={{ question.id }} value='Yes'
-        {% if prefilled|get_item:question.id == 'Yes' %}
+        {% if prefilled|get_form_item:question.id == 'Yes' %}
                 checked='checked'
         {% endif %}
         >
         &nbsp&nbsp&nbsp&nbsp
         <label for="{{ question.id }}_no">Ne</label>
         <input id="{{ question.id }}_no" type='radio' name={{ question.id }} value='No'
-        {% if prefilled|get_item:question.id == 'No' %}
+        {% if prefilled|get_form_item:question.id == 'No' %}
                 checked='checked'
         {% endif %}
         >
@@ -46,21 +46,21 @@
     
         <label for="{{ question.id }}_yes">Ano</label>
         <input id="{{ question.id }}_yes" type='radio' name={{ question.id }} value='Yes'
-        {% if prefilled|get_item:question.id == 'Yes' %}
+        {% if prefilled|get_form_item:question.id == 'Yes' %}
                 checked='checked'
         {% endif %}
         > 
         &nbsp&nbsp&nbsp&nbsp
         <label for="{{ question.id }}_no">Ne</label>
         <input id="{{ question.id }}_no" type='radio' name={{ question.id }} value='No'
-        {% if prefilled|get_item:question.id == 'No' %}
+        {% if prefilled|get_form_item:question.id == 'No' %}
                 checked='checked'
         {% endif %}
         >
         &nbsp&nbsp&nbsp&nbsp
         <label for="{{ question.id }}_dc">Je mi to jedno</label>
         <input id="{{ question.id }}_dc" type='radio' name={{ question.id }} value='dc'
-        {% if prefilled|get_item:question.id == 'dc' %}
+        {% if prefilled|get_form_item:question.id == 'dc' %}
                 checked='checked'
         {% endif %}
         >
