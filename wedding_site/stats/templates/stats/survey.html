@@ -22,6 +22,7 @@
 {% for question in questions %}
     <div>
         <h3> {{ question.text }} </h3>
+        <div style='padding-left:20px'>
         <b>Answers: {{ answers|get_item:question.id|get_len }}</b><br>
 
             {% if question.answer_type == 'rating' %}
@@ -31,13 +32,20 @@
                 {% endfor %}
                 </p>
                 {% if verbose %}
-                    {% for answer in answers|get_item:question.id %}
-                    Respondent: <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a>
-                        <p style='padding-left:20px;'> 
-                            {{ answer.value }}
+                    {% for rating in 6|get_range:1 %}
+                        <b>{{rating}}:</b>
+                        <p style='padding-left:20px;'>
+                        {% for answer in answers|get_item:question.id %}
+                        
+                            {% if answer.value == rating %}
+                            Respondent: <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a>
+                            {% endif %}
+                        
+                        {% endfor %}
                         </p>
                     {% endfor %}
                 {% endif %}
+
             {% elif question.answer_type == 'text' %}
                 {% if verbose %}
                     {% for answer in answers|get_item:question.id %}
@@ -47,15 +55,72 @@
                         </p>
                     {% endfor %}
                 {% endif %}
+
             {% elif question.answer_type == 'yes_no' %}
-                {{ answers|get_item:question.id|get_counts:question.answer_type }}
+                <p style='padding-left:20px;'>
+                {% for value, count in answers|get_item:question.id|get_counts:question.answer_type %}
+                    <b>{{ value }}:</b> {{ count }}&nbsp&nbsp
+                {% endfor %}
+                </p>
+                <br>
+                {% if verbose %}
+                <b>Ano:</b>
+                <p style='padding-left:20px;'>
+                    {% for answer in answers|get_item:question.id %}
+                        {% if answer.value %}
+                            Respondent: <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a>
+                        {% endif %}
+                    {% endfor %}
+                </p>
+                <b>Ne:</b>
+                <p style='padding-left:20px;'>
+                    {% for answer in answers|get_item:question.id %}
+                        {% if not answer.value %}
+                            Respondent: <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a>
+                        {% endif %}
+                    {% endfor %}
+                </p>
+                {% endif %}
+                
             {% elif question.answer_type == 'yes_no_dc' %}
+                <p style='padding-left:20px;'>
+                {% for value, count in answers|get_item:question.id|get_counts:question.answer_type %}
+                    <b>{{ value }}:</b> {{ count }}&nbsp&nbsp
+                {% endfor %}
+                </p>
+                <br>
+
+                {% if verbose %}
+                <b>Ano:</b>
+                <p style='padding-left:20px;'>
+                    {% for answer in answers|get_item:question.id %}
+                        {% if answer.value is True %}
+                            Respondent: <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a>
+                        {% endif %}
+                    {% endfor %}
+                </p>
+                <b>Ne:</b>
+                <p style='padding-left:20px;'>
+                    {% for answer in answers|get_item:question.id %}
+                        {% if answer.value is False %}
+                            Respondent: <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a>
+                        {% endif %}
+                    {% endfor %}
+                </p>
+                <b>Je mi to jedno:</b>
+                <p style='padding-left:20px;'>
+                    {% for answer in answers|get_item:question.id %}
+                        {% if answer.value is None %}
+                            Respondent: <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a>
+                        {% endif %}
+                    {% endfor %}
+                </p>
+                {% endif %}
                 
             {% else %}
                 Unknown
             {% endif %}
-
-        
+            </div>
     </div>
 {% endfor %}
 

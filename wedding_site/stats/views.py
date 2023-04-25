@@ -12,9 +12,15 @@ import hashlib
 def get_item(dct, key):
     return dct[key]
 
+
 @register.filter
 def get_len(sequence):
     return len(sequence)
+
+@register.filter
+def get_range(to, from_ = 0):
+    return list(range(from_, to))
+
 
 @register.filter
 def get_counts(answers, answer_type):
@@ -22,7 +28,16 @@ def get_counts(answers, answer_type):
         case 'rating':
             vals = list(map(lambda a: a.value, answers))
             return [(val, f'{vals.count(val)} ({vals.count(val)/len(answers)*100:.1f} %)') for val in sorted(set(vals))]
-
+        case 'yes_no':
+            vals = list(map(lambda a: a.value, answers))
+            yes_count = sum(vals)
+            no_count = len(vals) - yes_count
+            return [('Ano', f'{yes_count} ({yes_count/len(answers)*100:.1f} %)'),
+                    ('Ne', f'{no_count} ({no_count/len(answers)*100:.1f} %)')]
+        case 'yes_no_dc':
+            vals = list(map(lambda a: a.value, answers))
+            map_ = {True: 'Ano', False: 'Ne', None: 'Je mi to jedno'}
+            return [(name, f'{vals.count(val)} ({vals.count(val)/len(answers) * 100:.1f} %)') for val, name in map_.items()]
 
     return [answer_type]
 
@@ -120,10 +135,10 @@ def survey_view(request: HttpRequest, survey_id: int, verbose: bool = False) -> 
                                                               for x in ANSWERS))))
         for respondent in respondents:
             resp_answs = list(chain(*(x.objects.filter(question=question, respondent=respondent)
-                                                              for x in ANSWERS)))
+                                      for x in ANSWERS)))
             if len(resp_answs) >= 1:
-                answers[question.id].append(max(resp_answs, key=lambda x: x.answer_dt))
-
+                answers[question.id].append(
+                    max(resp_answs, key=lambda x: x.answer_dt))
 
     context: dict[str, Any] = {
         'survey': survey,
