@@ -1,9 +1,31 @@
 <html>
 
+<body>
+<div style='width:50%;margin-left:auto;margin-right:auto;'>
 <h1> {{ respondent.full_name }} </h1>
+<div style='float:right'>
+    Verbose: &nbsp
+    {% if verbose %}
+    On
+    {% else %}
+    Off
+    {% endif %}
+    &nbsp( 
+    {% if verbose %}
+    <a href="/stats/respondent/{{respondent.id}}/false">toggle</a>
+    {% else %}
+    <a href="/stats/respondent/{{respondent.id}}/true">toggle</a>
+    {% endif %}
+    )
+</div>
 
 {% for survey in surveys %}
-    <h2>Survey: {{survey.name}} </h2>
+    {% if verbose %}
+    <a href="/stats/survey/{{survey.id}}/true"><h2>Survey: {{survey.name}} </h2></a>
+    {% else %}
+    <a href="/stats/survey/{{survey.id}}/false"><h2>Survey: {{survey.name}} </h2></a>
+    {% endif %}
+    
     {% for question in questions|get_item:survey.id %}
     {{ question.text }} 
     <div style='padding-left:20px'>
@@ -38,4 +60,6 @@
     {% endfor %}
 
 {% endfor %}
+</div>
+</body>
 </html>

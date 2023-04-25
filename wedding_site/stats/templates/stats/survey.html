@@ -1,0 +1,64 @@
+<html>
+
+<body>
+<div style='width:50%;margin-left:auto;margin-right:auto;'>
+<h1>{{ survey.name }} </h1>
+    <div style='float:right'>
+        Verbose: &nbsp
+        {% if verbose %}
+        On
+        {% else %}
+        Off
+        {% endif %}
+        &nbsp( 
+        {% if verbose %}
+        <a href="/stats/survey/{{survey.id}}/false">toggle</a>
+        {% else %}
+        <a href="/stats/survey/{{survey.id}}/true">toggle</a>
+        {% endif %}
+        )
+    </div>
+
+{% for question in questions %}
+    <div>
+        <h3> {{ question.text }} </h3>
+        <b>Answers: {{ answers|get_item:question.id|get_len }}</b><br>
+
+            {% if question.answer_type == 'rating' %}
+                <p style='padding-left:20px;'>
+                {% for value, count in answers|get_item:question.id|get_counts:question.answer_type %}
+                    <b>{{ value }}:</b> {{ count }}&nbsp&nbsp
+                {% endfor %}
+                </p>
+                {% if verbose %}
+                    {% for answer in answers|get_item:question.id %}
+                    Respondent: <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a>
+                        <p style='padding-left:20px;'> 
+                            {{ answer.value }}
+                        </p>
+                    {% endfor %}
+                {% endif %}
+            {% elif question.answer_type == 'text' %}
+                {% if verbose %}
+                    {% for answer in answers|get_item:question.id %}
+                    Respondent: <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a>
+                        <p style='padding-left:20px;'> 
+                            {{ answer.value }}
+                        </p>
+                    {% endfor %}
+                {% endif %}
+            {% elif question.answer_type == 'yes_no' %}
+                {{ answers|get_item:question.id|get_counts:question.answer_type }}
+            {% elif question.answer_type == 'yes_no_dc' %}
+                
+            {% else %}
+                Unknown
+            {% endif %}
+
+        
+    </div>
+{% endfor %}
+
+</div>
+</body>
+</html>
