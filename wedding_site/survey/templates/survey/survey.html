@@ -8,6 +8,7 @@
 
 
 <p style='color:red;font-size:150%'> {{ prefilled.form_error }} </p>
+<p style='color:green;font-size:150%'> {{ prefilled.form_success }} </p>
 
 <form id="form_{{survey.id}}" action="/survey/{{survey.id}}" method='POST'>
 {% csrf_token %}

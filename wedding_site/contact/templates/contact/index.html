@@ -1,0 +1,27 @@
+<html>
+
+{{ top_layout | safe}}
+
+<div class='div_body'>
+
+<h1>Kontakt</h1>
+
+<p style='color:red;font-size:150%;'> {{ error | safe}} </p>
+<p style='color:green;font-size:150%;'> {{ success }} </p>
+
+<form method='POST' id='form_contact'>
+{% csrf_token %}
+
+Předmět: <br><input type='text' style='width:90%' name='subject' value="{{ prefilled.subject }}"><br><br>
+Email (nepovinné): <br><input type='text' style='width:90%' name='email' value="{{ prefilled.email }}"><br><br>
+Text: <br>
+<textarea name='message' form='form_contact' rows='15' style='width:90%;'>{{ prefilled.text }}</textarea><br>
+<input type='submit' value='Odeslat' style='float:right;margin-right:10%;margin-top:2%;' name='send'>
+</form>
+
+
+
+
+</div>
+
+</html>

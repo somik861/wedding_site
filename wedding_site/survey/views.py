@@ -37,13 +37,14 @@ def survey(request: HttpRequest, survey_id: int) -> HttpResponse:
     if 'send' in prefilled:
         try:
             save_survey(request, survey_id)
-            return HttpResponseRedirect('/survey')
+            prefilled = {'form_success': 'Dotazník úspěšně odeslán'}
         except FormException as e:
             prefilled['form_error'] = str(e)
 
     if 'load' in prefilled:
         try:
             prefilled = load_survey(request, survey_id)
+            prefilled['form_success'] = 'Dotazník úspěšně nahrán'
         except FormException as e:
             prefilled['form_error'] = str(e)
             
