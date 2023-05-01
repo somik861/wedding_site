@@ -1,10 +1,48 @@
+<html>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+    body {
+        background-color: #ffffff;
+        font-family: 'Pacifico', cursive;
+        color: #F085BE;
+    }
 
+    .button{
+        margin-top: 3%;
+        width: 15%;
+        height: 8%;
+        font-size: 33%;
+        font-family: Pacifico, cursive;
+        border-radius: 10px;
+    }
+
+    .button:hover{
+        background-color: #F085BE;
+    }
+
+    .input {
+        width: 30%;
+        height: 5%;
+        margin-top: -20px;
+        font-size: 33%;
+    }
+
+</style>
+
+<img src='/static/top_layout/pivon01.png' style='height: 30%; float: left; margin-left: 5%;'>
+<img src='/static/top_layout/rose01.png' style='height: 30%; float: right; margin-right: 5%;'>
 
 <form method='POST'>
     {% csrf_token %}
-    
-    Heslo: 
-    <input type='password' name='passwd'> </br>
-    <input type='submit' value='Přihlásit se' name='login'>
-    
-    </form>
+
+    <div style='text-align: center; margin-top: 5%; font-size: 600%;'>
+        <p>
+    Zadejte prosím heslo:
+        </p>
+    <input type='password' name='passwd' class='input'><br>
+    <input type='submit' value='Přihlásit se' name='login' class='button'>
+    </div>
+</form>
+
+</html>
