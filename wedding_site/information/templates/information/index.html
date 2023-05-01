@@ -2,16 +2,28 @@
 
 {{ top_layout | safe}}
 
+<style>
+    #header_info{
+        color: #F085BE;
+    }
+</style>
+
 <div class='div_body'>
-<h1>Information</h1>
 
 {% for block, infolist in infos.items %}
-    <h2> {{ block.name }} </h2>
+    <h1> {{ block }} </h1>
+    <div style='padding-left:3%;'>
     {% for info in infolist %}
+        {% if info.title is not None %}
         <h3> {{ info.title }} </h3>
-        <p>{{ info.text }}</p>
+        {% endif %}
+        <p style='padding-left: 3%;'>{{ info.text | safe}}</p>
     {% endfor %}
+    </div>
 {% endfor %}
+
+<div style='height: 20%;'>
+</div>
 </div>
 
 </html>

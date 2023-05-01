@@ -1,7 +1,9 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
     body {
         background-color: #ffffff;
+        font-family: 'Nunito Sans', sans-serif;
     }
 
     .top_navigation {
@@ -32,14 +34,16 @@
         margin-right: auto;
         margin-top: 5%;
     }
+
 </style>
 
 <img src='/static/top_layout/pivon01.png' style='width: 10%; float: left; margin-left: 5%;'>
 <img src='/static/top_layout/rose01.png' style='width: 10%; float: right; margin-right: 5%;'>
 
 <div class='top_div'>
-    <a class='top_navigation' href='/'>Hlavní strana</a>
-    <a class='top_navigation' href='/info/'>Informace</a>
-    <a class='top_navigation' href='/survey/'>Dotazník</a>
-    <a class='top_navigation' href='/contact/'>Kontakt</a>
+    <a class='top_navigation' id='header_main' href='/'>Hlavní strana</a>
+    <a class='top_navigation' id='header_info' href='/info/'>Informace</a>
+    <a class='top_navigation' id='header_schedule' href='/schedule/'>Program</a>
+    <a class='top_navigation' id='header_survey' href='/survey/'>Dotazník</a>
+    <a class='top_navigation' id='header_contact' href='/contact/'>Kontakt</a>
 </div>
