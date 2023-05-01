@@ -4,10 +4,11 @@ import top_layout
 from django.views.decorators.csrf import csrf_protect
 from typing import Any
 from django.core.mail import send_mail
+from login.views import check_login
 
 # Create your views here.
 
-
+@check_login
 @csrf_protect
 def index(request: HttpRequest) -> HttpResponse:
     context: dict[Any, Any] = {'top_layout': top_layout.get()}

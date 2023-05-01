@@ -5,7 +5,7 @@ from .models import Survey, SurveyQuestion, TextAnswer, RatingAnswer, YesNoAnswe
 from django.views.decorators.csrf import csrf_protect
 from django.template.defaulttags import register
 from django.utils import timezone
-
+from login.views import check_login
 
 @register.filter
 def get_form_item(dct, key):
@@ -17,7 +17,7 @@ class FormException(Exception):
 
 # Create your views here.
 
-
+@check_login
 def index(request) -> HttpResponse:
 
     surveys = Survey.objects.all()
@@ -25,7 +25,7 @@ def index(request) -> HttpResponse:
     context = {'top_layout': top_layout.get(), 'surveys': surveys}
     return render(request, 'survey/index.html', context)
 
-
+@check_login
 @csrf_protect
 def survey(request: HttpRequest, survey_id: int) -> HttpResponse:
 

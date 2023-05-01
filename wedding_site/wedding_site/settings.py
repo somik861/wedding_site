@@ -31,6 +31,7 @@ ALLOWED_HOSTS: list[str] = []
 # Application definition
 
 INSTALLED_APPS = [
+    'login.apps.LoginConfig',
     'schedule.apps.ScheduleConfig',
     'contact.apps.ContactConfig',
     'stats.apps.StatsConfig',

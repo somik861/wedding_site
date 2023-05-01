@@ -9,11 +9,25 @@
 </style>
 
 <div class='div_body'>
-<h1>Dotazníky</h1>
+<p>Pokud nám chcete usnadnit rozhodnování, vyplňte prosím následující dotazník. Není to nic těžkého, stačí nám jen Váš názor na to, co máte nebo nemáte rádi, abychom mohli vybrat to nejlepší pro všechny.</p>
+<p>Otázky, které umožňující vybrat číslo 1 až 5 berte přesně jako hodnocení hvězdičkami. Tedy 1 je nejhorší/nejméně a 5 je nejlepší/nejvíce. </p>
+<p>Je nám jasné, že časy i vaše preference se mohou měnit. Abyste se mohli podívat na Vaše předcházející odpovědi a případně je upravit, pomatujeme si Vaše jméno. 
+    Pokud by se tedy mohlo stát, že je Vás se stejným jménem více (např.: v rodině), připojte ke jménu ještě něco pro rozlišení (třeba 'ml.').
+</p>
+<p>Není nutné dodržet žádný formát jména, nic podobného se nekontroluje. Stačí nám třeba i Vaše přezdívka, čistě jen pro to, abychom Vás poznali my.</p>
 
+<div style='padding-left: 10%;padding-top: 5%;'>
 {% for survey in surveys %}
-    <a href="/survey/{{ survey.id }}"> {{ survey.name }} </a>
+    <a href="/survey/{{ survey.id }}" style='text-decoration: none; font-size: 150%;'> {{ survey.name }} </a><br>
 {% endfor %}
 </div>
+</div>
+
+<div style='height: 20%;'>
+</div>
+
+<div style='margin-left: auto; margin-right: auto; text-align: center;'>
+    <img src='/static/top_layout/rose02.png' style='width: 75px;'>
+    </div>
 
 </html>

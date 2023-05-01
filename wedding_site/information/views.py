@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import top_layout
+from login.views import check_login
 
 
 class Information:
@@ -12,11 +13,12 @@ InfoBlock = str
 
 
 # Create your views here.
+@check_login
 def index(request) -> HttpResponse:
     infos: dict[InfoBlock, list[Information]] = {}
 
     infos['Kde a kdy?'] = [
-        Information('Kdy?', '11. 5. 2024 o 16:45'),
+        Information('Kdy?', 'V sobotu 11. 5. 2024 o 16:45'),
         Information('Kde bude hostina?', '''Victoria Trnava, Štefánikova 35
 <br><br>
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2650.0071019787847!2d17.58172937678898!3d48.379599834280576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476ca16f9e30ae3d%3A0x173eacf95860fb95!2sVictoria%20Trnava!5e0!3m2!1scs!2scz!4v1682956991370!5m2!1scs!2scz" 
@@ -27,6 +29,7 @@ width="90%" height="40%" style="border:0;" allowfullscreen="" loading="lazy" ref
     infos['Co na sebe?'] = [Information(None, 'To nejdůležitější pro nás je Vaše pohodlí. Nechceme předepisovat žádná pravidla, ani doporučení. Vemte si to, v čem se budete cítit dobře a můžete se uvolnit.')]
 
     infos['Detaily sálu'] = [
+        Information('Domácí mazlíčci', 'Zvířátka, ani malá, náš sál nedovoluje. Děti přivést samozřejmě můžete.'),
         Information('Parkování', '''
         Před sálem se bohužel parkovat nedá. Nicméně není problém na daném místě vystoupit z auto nebo z taxíku. 
         Hosté cestují z dálných končin budou moci auta nechat před hotele, kde budou ubytováni a v případě potřeby dojet k sálu taxíkem (nebojte se, je to kousek).''' ),
@@ -39,7 +42,7 @@ Zdá se Vám to moc komplikované? Nebojte, kdybyste se náhodou chtěli ztratit
         Information('Co jsem sem neměl podle Nasti dávat?', 'Vedle záchodů je gauč. To je fajn, protože když náhodou bude na záchod fronta, máte si kam sednout :D.'),
     ]
 
-    infos['TODO'] = [
+    infos['Pozornosti'] = [
         Information('Květy', '''Plánujete přinést obrovskou honosnou kytici? A už někdy někdo z Vás musel přenášet z 
         Trnavy do Brna vlakem těch kytic několik a doufat, že se to vejde do malého bytíku? <br>
 V této situaci bychom se mohli ocitnout i my a věříme, že toto nikdo nikomu nepřeje. Naopak nás potěší, když jako 
@@ -50,6 +53,5 @@ Bohužel budeme ještě řádku let bývat v malém bytě, který už nové věc
 To nejdůležitější už přece máme, našli jsme si sami sebe. <br> Pokud byste nás i přesto chěli obdarovat, budeme rádi za jakýkoliv finanční příspěvek na naši vysněnou svatební cestu.''')
     ]
 
-    # return HttpResponse(out)
     context = {'infos': infos, 'top_layout': top_layout.get()}
     return render(request, 'information/index.html', context)

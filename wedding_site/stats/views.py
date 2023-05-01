@@ -6,6 +6,7 @@ from typing import Any
 from itertools import chain
 from django.template.defaulttags import register
 import hashlib
+from login.views import check_login
 
 
 @register.filter
@@ -46,9 +47,9 @@ PASSWD_HASH: bytes = b'd\x13\x83\xda\r\xffa\x1d\x10d\xfbM\xce\xf1]\xeas"\xdf`\xc
 ANSWERS = [TextAnswer, RatingAnswer, YesNoAnswer, YesNoDcAnswer]
 
 
-def check_login(f):
+def check_stats_login(f):
     def wrapper(request: HttpRequest, *args, **kwargs):
-        if request.session.get('login_status', 'NOK') != 'OK':
+        if request.session.get('stats_login_status', 'NOK') != 'OK':
             return HttpResponseRedirect('/stats/')
         return f(request, *args, **kwargs)
 
@@ -56,7 +57,7 @@ def check_login(f):
 
 # Create your views here.
 
-
+@check_login
 @csrf_protect
 def login(request: HttpRequest) -> HttpResponse:
     if request.method == 'POST':
@@ -64,15 +65,15 @@ def login(request: HttpRequest) -> HttpResponse:
         if 'login' in data:
             passwd = data['passwd']
             if hashlib.sha512(passwd.encode(encoding='utf-8')).digest() == PASSWD_HASH:
-                request.session['login_status'] = 'OK'
+                request.session['stats_login_status'] = 'OK'
 
-    if request.session.get('login_status', 'NOK') == 'OK':
+    if request.session.get('stats_login_status', 'NOK') == 'OK':
         return HttpResponseRedirect('/stats/main_view')
 
     return render(request, 'stats/login.html', {})
 
-
 @check_login
+@check_stats_login
 def main_view(request: HttpRequest) -> HttpResponse:
     context: dict[str, Any] = {}
     context['respondents'] = Respondent.objects.all()
@@ -80,8 +81,8 @@ def main_view(request: HttpRequest) -> HttpResponse:
 
     return render(request, 'stats/main_view.html', context)
 
-
 @check_login
+@check_stats_login
 def respondent_view(request: HttpRequest, resp_id: int, verbose: bool = False) -> HttpResponse:
     respondent = get_object_or_404(Respondent, id=resp_id)
 
@@ -120,8 +121,8 @@ def respondent_view(request: HttpRequest, resp_id: int, verbose: bool = False) -
 
     return render(request, 'stats/respondent.html', context)
 
-
 @check_login
+@check_stats_login
 def survey_view(request: HttpRequest, survey_id: int, verbose: bool = False) -> HttpResponse:
 
     survey = get_object_or_404(Survey, id=survey_id)
