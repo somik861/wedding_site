@@ -26,16 +26,18 @@ def index(request: HttpRequest) -> HttpResponse:
             context['error'] = err
 
         if 'error' not in context:
-            send_mail(
-                prefilled['subject'] + (f' --email: {prefilled["email"]}' if prefilled['email'] else ''),
-                prefilled['message'],
-                from_email=None,
-                recipient_list=['jjnk.svatba@seznam.cz'],
-                fail_silently=False,
-            )
-            context.pop('prefilled')
-            context['success'] = 'Email byl úspěšně odeslán.'
-
-    
+            try:
+                send_mail(
+                    prefilled['subject'] + (f' --email: {prefilled["email"]}' if prefilled['email'] else ''),
+                    prefilled['message'],
+                    from_email=None,
+                    recipient_list=['svatba.jjnk@gmail.com'],
+                    fail_silently=False,
+                )
+                context.pop('prefilled')
+                context['success'] = 'Zpráva byla úspěšně odeslána.'
+            except Exception as e:
+                context['error'] = 'Při odesílání se něco pokazilo, pokud můžete, dejte nám o tom vědět přímo na mail, abychom to mohli prozkoumat.'
+                raise e
 
     return render(request, 'contact/index.html', context)

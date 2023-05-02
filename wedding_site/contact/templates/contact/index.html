@@ -15,6 +15,7 @@
    <p> Není to vůbec složité, stačí když nám zanecháte zprávu pomocí formuláře níže a my už se o vše postaráme. <br>
     Pro případ, kdy je namístě, abychom Vás kontaktovali nazpět, nezapomeňte nám zanechat také email,
     nebo jiný vámi preferovaný kontakt. </p>
+    <p>Pokud by náhodou něco nefungovalo, můžete se nám ozvat přímo na svatba.jjnk@gmail.com</p>
 </div>
 
 <p style='color:red;font-size:150%;'> {{ error | safe}} </p>
@@ -26,7 +27,7 @@
 Předmět: <br><input type='text' style='width:95%' name='subject' value="{{ prefilled.subject }}"><br><br>
 Email (nepovinné): <br><input type='text' style='width:95%' name='email' value="{{ prefilled.email }}"><br><br>
 Text: <br>
-<textarea name='message' form='form_contact' rows='15' style='width:95%;'>{{ prefilled.text }}</textarea><br>
+<textarea name='message' form='form_contact' rows='15' style='width:95%;'>{{ prefilled.message }}</textarea><br>
 <input type='submit' value='Odeslat' style='float:right;margin-right:5%;margin-top:2%;' name='send'>
 </form>
 

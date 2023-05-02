@@ -134,12 +134,13 @@ import json
 from pathlib import Path
 with open(Path(__file__).parent.parent/'email_creds.json', 'r', encoding='utf-8') as f:
     _tmp_json = json.load(f)
-    _address = _tmp_json['address']
-    _passwd = _tmp_json['password']
-    DEFAULT_FROM_EMAIL = _address
-    EMAIL_HOST_USER = _address
-    EMAIL_HOST_PASSWORD = _passwd
-    EMAIL_HOST = 'smtp.seznam.cz'
-    EMAIL_PORT = 465
-    EMAIL_USE_SSL = True
+_address = _tmp_json['address']
+_passwd = _tmp_json['password']
+DEFAULT_FROM_EMAIL = _address
+EMAIL_HOST_USER = _address
+EMAIL_HOST_PASSWORD = _passwd
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_SSL = True
 
