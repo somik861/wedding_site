@@ -24,7 +24,7 @@ import json
 SECRET_KEY = json.loads(open(BASE_DIR/'django.key.json').read())['key']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = json.loads(open(BASE_DIR/'django.debug.json').read())['value']
 
 ALLOWED_HOSTS: list[str] = ['svatbajjnk.pythonanywhere.com', '127.0.0.1']
 

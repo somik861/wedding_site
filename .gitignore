@@ -10,3 +10,4 @@
 # credentials
 wedding_site/email_creds.json
 wedding_site/django.key.json
+wedding_site/django.debug.json
