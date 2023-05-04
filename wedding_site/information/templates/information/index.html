@@ -11,7 +11,7 @@
 <div class='div_body'>
 
 {% for block, infolist in infos.items %}
-    <h1> {{ block }} </h1>
+    <h1 class='colored'> {{ block }} </h1>
     <div style='padding-left:3%;'>
     {% for info in infolist %}
         {% if info.title is not None %}
