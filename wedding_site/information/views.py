@@ -39,7 +39,16 @@ Záchody, obřadní místo i sál s hostinou jsou na přízemí a schody tak pra
         Pro tyto situace poskytuje areál se sálem i krytou venkovní terasu, kde si budete moci užít ticho, oddechnout si a načerpat síly na další část večera.'''),
         Information('Jak se dostat dovnitř', '''Dveře do areálu nejsou hned u ulice. Je potřeba vejít do pasáže a až tam po pravé straně najdete co hledáte.<br>
 Zdá se Vám to moc komplikované? Nebojte, kdybyste se náhodou chtěli ztratit, odchytnou Vás u dveří rodiče nevěsty.'''),
+        Information('Kam si sednout', '''Zasedací pořádek si můžete prohlédnout na <a href="/guests#seats">stránce s hosty</a>. 
+        Pokud se nemůžete najít, nepanikařte, zasedací pořádek i seznam hostů průběžně aktualizujeme a brzy Vás přidáme.'''),
         Information('Co jsem sem neměl podle Nasti dávat?', 'Vedle záchodů je gauč. To je fajn, protože když náhodou bude na záchod fronta, máte si kam sednout :D.'),
+    ]
+
+    infos['Máme dovoleno fotit?'] = [
+        Information(None, '''Focení vám samozřejmě zakázat nemůžeme. Máme však domluveného šikovného fotografa, co bude celý večer dokumentovat,
+        fotit párové a skupinové fotky a vlastně cokoliv co si vymyslíte. Tyto fotografie Vám v nejbližším možném termínu zveřejníme na webových stránkách.
+        Budeme tedy rádi, když necháte vaše mazlíčky s bleskem doma, aby se jim nic nestalo a abyste na ně nemuseli dávat pozor.
+        ''')
     ]
 
     infos['Pozornosti'] = [
