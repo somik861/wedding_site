@@ -50,6 +50,22 @@
                 {% else %}
                     Ne
                 {% endif %}
+
+            {% elif question.answer_type == 'alcohol' %}
+                {% if answer.value == 1 %}
+                    Nepiji alkohol
+                {% elif answer.value == 2 %}
+                    Dám si přípitek
+                    {% elif answer.value == 3 %}
+                    Pár sklinek zvládnu
+                    {% elif answer.value == 4 %}
+                    Rád si toho trošku vypiji
+                    {% elif answer.value == 5 %}
+                    Chystám se na velkou párty
+                {% else %}
+                    Unknown
+                {% endif %}
+
             {% else %}
                 Unknown
             {% endif %}
