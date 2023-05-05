@@ -117,6 +117,39 @@
                 </p>
                 {% endif %}
                 
+                {% elif question.answer_type == 'alcohol' %}
+                <p style='padding-left:20px;'>
+                {% for value, count in answers|get_item:question.id|get_counts:question.answer_type %}
+                    <b>{{ value }}:</b> {{ count }}&nbsp&nbsp
+                {% endfor %}
+                </p>
+                {% if verbose %}
+                    {% for rating in 6|get_range:1 %}
+                        <b>
+                        {% if rating == 1 %}
+                        Nepiji alkohol
+                        {% elif rating == 2 %}
+                        Dám si přípitek
+                        {% elif rating == 3 %}
+                        Pár sklinek zvládnu
+                        {% elif rating == 4 %}
+                        Rád si trošku vypiji
+                        {% elif rating == 5 %}
+                        Idem párty hard
+                        {% endif %}
+                        :</b>
+                        <p style='padding-left:20px;'>
+                        {% for answer in answers|get_item:question.id %}
+                        
+                            {% if answer.value == rating %}
+                            Respondent: <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a>
+                            {% endif %}
+                        
+                        {% endfor %}
+                        </p>
+                    {% endfor %}
+                {% endif %}
+
             {% else %}
                 Unknown
             {% endif %}

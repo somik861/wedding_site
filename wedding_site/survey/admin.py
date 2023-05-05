@@ -12,5 +12,6 @@ for elem in [
     RatingAnswer,
     YesNoAnswer,
     YesNoDcAnswer,
+    AlcoholAnswer,
 ]:
     admin.site.register(elem)

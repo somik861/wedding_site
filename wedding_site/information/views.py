@@ -31,8 +31,8 @@ width="90%" height="40%" style="border:0;" allowfullscreen="" loading="lazy" ref
     infos['Detaily sálu'] = [
         Information('Domácí mazlíčci', 'Zvířátka, ani malá, náš sál nedovoluje. Děti přivést samozřejmě můžete.'),
         Information('Parkování', '''
-        Před sálem se bohužel parkovat nedá. Nicméně není problém na daném místě vystoupit z auto nebo z taxíku. 
-        Hosté cestují z dálných končin budou moci auta nechat před hotele, kde budou ubytováni a v případě potřeby dojet k sálu taxíkem (nebojte se, je to kousek).''' ),
+        Před sálem se bohužel parkovat nedá. Nicméně není problém na daném místě vystoupit z auta nebo z taxíku. 
+        Hosté cestující z dálných končin budou moci auta nechat před hotelem, kde budou ubytovaní a v případě potřeby dojet k sálu taxíkem (nebojte se, je to kousek).''' ),
         Information('Uff schody ...', '''No, i na to jsme mysleli. <br>
 Záchody, obřadní místo i sál s hostinou jsou na přízemí a schody tak prakticky nestřetnete.'''),
         Information('Když je potřeba trochu klidu', '''Čas od času si každý potřebuje odpočinout. Nebudeme to brát, jako neslušnost. 
@@ -55,7 +55,7 @@ Zdá se Vám to moc komplikované? Nebojte, kdybyste se náhodou chtěli ztratit
         Information('Květy', '''Plánujete přinést obrovskou honosnou kytici? A už někdy někdo z Vás musel přenášet z 
         Trnavy do Brna vlakem těch kytic několik a doufat, že se to vejde do malého bytíku? <br>
 V této situaci bychom se mohli ocitnout i my a věříme, že toto nikdo nikomu nepřeje. Naopak nás potěší, když jako 
-pozornost donese každý například jednu růži. Všechny růže se potom budou umísťovat do velké vázy a tak vznike jedna
+pozornost donese každý jednu růži. Všechny růže se potom budou umísťovat do velké vázy a tak vznike jedna
  obrovská společná kytice, kterou si můžeme s láskou v srdci odnést.'''),
         Information('Svatební dary', '''Lámete si hlavu s tím, co nám vybrat? Nebo naopak už kujete pykle a snažíte se nám připravit obrovské překvapení? <br>
 Bohužel budeme ještě řádku let bývat v malém bytě, který už nové věci nepojme a transport dárků společně s ostatními věci ze svatby by byl přinejmenším komplikovaný. 

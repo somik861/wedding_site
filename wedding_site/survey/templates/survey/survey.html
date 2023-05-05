@@ -73,6 +73,38 @@
                 checked='checked'
         {% endif %}
         >
+
+    {% elif question.answer_type == 'alcohol' %}
+        <label for="{{ question.id }}_1">Nepiji alkohol</label>
+        <input id="{{ question.id }}_1" type='radio' name={{ question.id }} value='1'
+        {% if prefilled|get_form_item:question.id == '1' %}
+                checked='checked'
+        {% endif %}
+        ><br>
+        <label for="{{ question.id }}_2">Dám si přípitek</label>
+        <input id="{{ question.id }}_2" type='radio' name={{ question.id }} value='2'
+        {% if prefilled|get_form_item:question.id == '2' %}
+                checked='checked'
+        {% endif %}
+        ><br>
+        <label for="{{ question.id }}_3">Pár sklinek zvládnu</label>
+        <input id="{{ question.id }}_3" type='radio' name={{ question.id }} value='3'
+        {% if prefilled|get_form_item:question.id == '3' %}
+                checked='checked'
+        {% endif %}
+        ><br>
+        <label for="{{ question.id }}_4">Rád si toho trošku vypiji</label>
+        <input id="{{ question.id }}_4" type='radio' name={{ question.id }} value='4'
+        {% if prefilled|get_form_item:question.id == '4' %}
+                checked='checked'
+        {% endif %}
+        ><br>
+        <label for="{{ question.id }}_5">Chystám se na velkou párty<label>
+        <input id="{{ question.id }}_5" type='radio' name={{ question.id }} value='5'
+        {% if prefilled|get_form_item:question.id == '5' %}
+                checked='checked'
+        {% endif %}
+        >
     {% else %}
         Unknown
     {% endif %}

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 import top_layout
-from .models import Survey, SurveyQuestion, TextAnswer, RatingAnswer, YesNoAnswer, YesNoDcAnswer, Answer, Respondent
+from .models import Survey, SurveyQuestion, TextAnswer, RatingAnswer, YesNoAnswer, YesNoDcAnswer, AlcoholAnswer, Answer, Respondent
 from django.views.decorators.csrf import csrf_protect
 from django.template.defaulttags import register
 from django.utils import timezone
@@ -85,7 +85,7 @@ def load_survey(request: HttpRequest, survey_id: int) -> dict[str, str]:
         raise FormException('Pro nahrátí předchozích smažte svůj dosavadní výběr (např.: znovu otevřete dotazník).')
     
     out = {'respondent' : data['respondent']}
-    for answer_type in [RatingAnswer, TextAnswer, YesNoAnswer, YesNoDcAnswer]:
+    for answer_type in [RatingAnswer, TextAnswer, YesNoAnswer, YesNoDcAnswer, AlcoholAnswer]:
         answ = _get_latest_answer(
             filter(lambda a:a.question.survey == survey , answer_type.objects.filter(respondent=resp))
         )
@@ -159,5 +159,13 @@ def save_survey(request: HttpRequest, survey_id: int) -> None:
                     answer_dt=timezone.now(),
                     value=val,
                 )
+            case SurveyQuestion.AnswerType.ALCOHOL:
+                answ = RatingAnswer(
+                    question=question,
+                    respondent=resp,
+                    answer_dt=timezone.now(),
+                    value=int(value),
+                )
+
 
         answ.save()

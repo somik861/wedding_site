@@ -17,6 +17,7 @@ class SurveyQuestion(Model):
         TEXT = 'text'
         YES_NO = 'yes_no', 'yes - no'
         YES_NO_DC = 'yes_no_dc', 'yes, no, don\'t care'
+        ALCOHOL = 'alcohol'
 
     answer_type: CharField = CharField(
         max_length=200,
@@ -48,3 +49,6 @@ class YesNoAnswer(Answer):
 
 class YesNoDcAnswer(Answer):
     value: BooleanField = BooleanField(null=True)
+
+class AlcoholAnswer(Answer):
+    value: IntegerField = IntegerField()

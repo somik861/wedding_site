@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_protect
-from survey.models import Respondent, Survey, TextAnswer, RatingAnswer,  YesNoAnswer, YesNoDcAnswer, SurveyQuestion, Answer
+from survey.models import Respondent, Survey, TextAnswer, RatingAnswer,  YesNoAnswer, YesNoDcAnswer, SurveyQuestion, Answer, AlcoholAnswer
 from typing import Any
 from itertools import chain
 from django.template.defaulttags import register
@@ -25,6 +25,8 @@ def get_range(to, from_ = 0):
 
 @register.filter
 def get_counts(answers, answer_type):
+    if len(answers) == 0:
+        return ''
     match answer_type:
         case 'rating':
             vals = list(map(lambda a: a.value, answers))
@@ -39,12 +41,16 @@ def get_counts(answers, answer_type):
             vals = list(map(lambda a: a.value, answers))
             map_ = {True: 'Ano', False: 'Ne', None: 'Je mi to jedno'}
             return [(name, f'{vals.count(val)} ({vals.count(val)/len(answers) * 100:.1f} %)') for val, name in map_.items()]
+        
+        case 'alcohol':
+            vals = list(map(lambda a: a.value, answers))
+            return [(val, f'{vals.count(val)} ({vals.count(val)/len(answers)*100:.1f} %)') for val in sorted(set(vals))]
 
     return [answer_type]
 
 
 PASSWD_HASH: bytes = b'd\x13\x83\xda\r\xffa\x1d\x10d\xfbM\xce\xf1]\xeas"\xdf`\xc7\x95\xb2=\xa9\x9dQ\xb2f\x17!\x16\xd24j`\xa8R\xd9]2\xe7Hl\x07\xf4\xa6\x13\xa4\xa79\xd6\xf9Y\x83\x98\x9b\x95\xf7\xdf\xbb?\x00\xe6'
-ANSWERS = [TextAnswer, RatingAnswer, YesNoAnswer, YesNoDcAnswer]
+ANSWERS = [TextAnswer, RatingAnswer, YesNoAnswer, YesNoDcAnswer, AlcoholAnswer]
 
 
 def check_stats_login(f):
