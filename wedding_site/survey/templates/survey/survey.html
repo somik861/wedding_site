@@ -22,7 +22,7 @@
 {% csrf_token %}
 
 {% for question in questions %}
-    <h3> {{ question.text }} <h3>
+    <h3> {{ question.text }} </h3>
     {% if question.answer_type == 'rating' %}
         {% for rate in possible_rates %}
             <label for="{{ question.id }}_{{rate}}">{{ rate }}</label>
@@ -122,8 +122,9 @@
 <br>
 <br>
 
-<input type='submit' value='Odeslat' name='send'>
-<input type='submit' value='Nahrát' name='load'>
+<input type='submit' value='Odeslat' name='send'>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<input type='submit' value='Nahrát předešlé odpovědi' name='load'><br>
+<p style='font-size: 100%;'> (odeslání a načtení může chvíli trvat, prosíme o strpení) </p>
 <form>
 </div>
 
