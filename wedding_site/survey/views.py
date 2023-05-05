@@ -86,24 +86,30 @@ def load_survey(request: HttpRequest, survey_id: int) -> dict[str, str]:
     
     out = {'respondent' : data['respondent']}
     for answer_type in [RatingAnswer, TextAnswer, YesNoAnswer, YesNoDcAnswer, AlcoholAnswer]:
-        answ = _get_latest_answer(
-            filter(lambda a:a.question.survey == survey , answer_type.objects.filter(respondent=resp))
-        )
-        value = answ.value
+        all_answers = list(filter(lambda a:a.question.survey == survey , answer_type.objects.filter(respondent=resp)))
+        unique_ids = set(map(lambda x:x.id, all_answers))
+        for id_ in unique_ids:
+            answers_id = list(filter(lambda x:x.id == id_, all_answers))
+            if len(answers_id) == 0:
+                continue
 
-        if answer_type is YesNoDcAnswer:
-            match value:
-                case True:
-                    value = 'Yes'
-                case False:
-                    value = 'No'
-                case None:
-                    value = 'dc'
+            answ = _get_latest_answer(answers_id)
             
-        if answer_type is YesNoAnswer:
-            value = 'Yes' if value else 'No'
+            value = answ.value
 
-        out[str(answ.question.id)] = str(value)
+            if answer_type is YesNoDcAnswer:
+                match value:
+                    case True:
+                        value = 'Yes'
+                    case False:
+                        value = 'No'
+                    case None:
+                        value = 'dc'
+                
+            if answer_type is YesNoAnswer:
+                value = 'Yes' if value else 'No'
+
+            out[str(answ.question.id)] = str(value)
     
     return out
 
