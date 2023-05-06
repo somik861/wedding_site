@@ -38,7 +38,7 @@
                         {% for answer in answers|get_item:question.id %}
                         
                             {% if answer.value == rating %}
-                            Respondent: <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a>
+                            <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a><br>
                             {% endif %}
                         
                         {% endfor %}
@@ -68,7 +68,7 @@
                 <p style='padding-left:20px;'>
                     {% for answer in answers|get_item:question.id %}
                         {% if answer.value %}
-                            Respondent: <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a>
+                            <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a><br>
                         {% endif %}
                     {% endfor %}
                 </p>
@@ -76,7 +76,7 @@
                 <p style='padding-left:20px;'>
                     {% for answer in answers|get_item:question.id %}
                         {% if not answer.value %}
-                            Respondent: <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a>
+                            <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a><br>
                         {% endif %}
                     {% endfor %}
                 </p>
@@ -95,7 +95,7 @@
                 <p style='padding-left:20px;'>
                     {% for answer in answers|get_item:question.id %}
                         {% if answer.value is True %}
-                            Respondent: <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a>
+                            <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a><br>
                         {% endif %}
                     {% endfor %}
                 </p>
@@ -103,7 +103,7 @@
                 <p style='padding-left:20px;'>
                     {% for answer in answers|get_item:question.id %}
                         {% if answer.value is False %}
-                            Respondent: <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a>
+                            <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a><br>
                         {% endif %}
                     {% endfor %}
                 </p>
@@ -111,7 +111,7 @@
                 <p style='padding-left:20px;'>
                     {% for answer in answers|get_item:question.id %}
                         {% if answer.value is None %}
-                            Respondent: <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a>
+                            <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a><br>
                         {% endif %}
                     {% endfor %}
                 </p>
@@ -142,7 +142,7 @@
                         {% for answer in answers|get_item:question.id %}
                         
                             {% if answer.value == rating %}
-                            Respondent: <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a>
+                            <a href="/stats/respondent/{{answer.respondent.id}}/true">{{answer.respondent.full_name}}</a><br>
                             {% endif %}
                         
                         {% endfor %}
