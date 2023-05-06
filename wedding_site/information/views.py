@@ -59,7 +59,7 @@ pozornost donese každý jednu růži. Všechny růže se potom budou umísťova
  obrovská společná kytice, kterou si můžeme s láskou v srdci odnést.'''),
         Information('Svatební dary', '''Lámete si hlavu s tím, co nám vybrat? Nebo naopak už kujete pykle a snažíte se nám připravit obrovské překvapení? <br>
 Bohužel budeme ještě řádku let bývat v malém bytě, který už nové věci nepojme a transport dárků společně s ostatními věci ze svatby by byl přinejmenším komplikovaný. 
-To nejdůležitější už přece máme, našli jsme si sami sebe. <br> Pokud byste nás i přesto chěli obdarovat, budeme rádi za jakýkoliv finanční příspěvek na naši vysněnou svatební cestu.''')
+To nejdůležitější už přece máme, našli jsme si sami sebe. <br> Pokud byste nás i přesto chtěli obdarovat, budeme rádi za jakýkoliv finanční příspěvek na naši vysněnou svatební cestu.''')
     ]
 
     context = {'infos': infos, 'top_layout': top_layout.get()}
