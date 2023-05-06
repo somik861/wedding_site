@@ -18,7 +18,7 @@ def index(request) -> HttpResponse:
     infos: dict[InfoBlock, list[Information]] = {}
 
     infos['Kde a kdy?'] = [
-        Information('Kdy?', 'V sobotu 11. 5. 2024 o 16:45'),
+        Information('Kdy?', 'V sobotu 11. 5. 2024 v 16:45'),
         Information('Kde bude hostina?', '''Victoria Trnava, Štefánikova 35
 <br><br>
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2650.0071019787847!2d17.58172937678898!3d48.379599834280576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476ca16f9e30ae3d%3A0x173eacf95860fb95!2sVictoria%20Trnava!5e0!3m2!1scs!2scz!4v1682956991370!5m2!1scs!2scz" 
