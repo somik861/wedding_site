@@ -11,7 +11,6 @@
 <div class='div_body'>
 <p>Všechna políčka v dotazníku, kromě jména, jsou nepovinná. Když budete s vyplněním spokojení, klikněte na 'Odeslat' a odpovědi poputují k nám.
      Pokud si přejete nahrát vaše předcházející odpovědi, zadejte jméno a klikněte na tlačítko 'Nahrát'.</p>
-<p>Otázky, které umožňují vybrat číslo 1 až 5, berte přesně jako hodnocení hvězdičkami. Tedy 1 je nejhorší/nejméně a 5 je nejlepší/nejvíce. </p>
 
 <h1> {{ survey.name }} </h1> 
 
@@ -26,7 +25,7 @@
     <h3> {{ question.text }} </h3>
     {% if question.answer_type == 'rating' %}
         {% for rate in possible_rates %}
-            <label for="{{ question.id }}_{{rate}}">{{ rate }}</label>
+            <label for="{{ question.id }}_{{rate}}">{% if rate == '1' %} 1 (nejméně) {% elif rate == '5' %} 5 (nejvíce) {% else %} {{ rate }} {% endif %} </label>
             <input id="{{ question.id }}_{{rate}}" type='radio' name={{ question.id }} value={{ rate }}
             {% if prefilled|get_form_item:question.id == rate %}
                 checked='checked'
