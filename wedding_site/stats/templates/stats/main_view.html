@@ -1,7 +1,7 @@
 <html>
 
 <h1>Main view</h1>
-<h2>Respondenti</h2>
+<h2>Respondenti ({{ respondents|get_len }})</h2>
 {% for respondent in respondents %}
     <a href="/stats/respondent/{{respondent.id}}">{{respondent.full_name}}</a><br>
 {% endfor %}
