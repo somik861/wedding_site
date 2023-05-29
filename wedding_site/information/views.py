@@ -26,7 +26,39 @@ width="90%" height="40%" style="border:0;" allowfullscreen="" loading="lazy" ref
     '''),
         Information('Kde bude obřad?', 'Nebojte se žádného přesouvání, obřad bude na tom stejném místě jako hostina.')]
     
-    infos['Co na sebe?'] = [Information(None, 'To nejdůležitější pro nás je Vaše pohodlí. Nechceme předepisovat žádná pravidla, ani doporučení. Vemte si to, v čem se budete cítit dobře a můžete se uvolnit.')]
+    infos['Co na sebe?'] = [Information('Existují jen 4 pravidla', '''
+    <ul>
+        <li>Nejdůležitější je, abyste se cítili poholně, mohli tancovat a bavit se.</li>
+        <li>Bylo by dobré, kdyby jste se ve svém výběru cítili sebevědomě a měli chuť se s námi vyfotit.</li>
+        <li>Dlouhé tylové princeznovské svatební šaty jsou pro všechny kromě nevěsty zakázané.</li>
+        <li>Vemte si alespoň spodní prádlo, abych nepohoršovali zaměstnance a Nastina dědu.</li>
+    </ul>
+    '''),
+    Information('Dodatečné doporučení', '''
+    <ul>
+        <li>Svatba je sice v květnu, ale sál není úplně největší. Počítejte s tím, že tam bude teplo. Doporučujeme tedy tenčí oblečení, případně něco na přehození, pokud chcete vybíhat na terasu a ven.</li>
+        <li>Rádi bychom, abyste se trošku hýbali a tancovali, je proto naprosto v pořádku preferovat pohodlnější obuv. Není samozřejmě problém si Vaše oblíbené botky vzít jen na focení a potom se přezout.</li>
+    </ul>
+    '''),
+    Information('Bližší detaily - muži', '''
+        V pořádku jsou obleky a košile všech barev a vzorů. Kravaty a motýlci jsou čistě na vašem uvážení a nejsou nijak vyžadovány. 
+        Stejně tak není problém vynechat sako.
+    '''),
+    Information('Bližší detaily - ženy', '''
+        <ul>
+            <li>Víme, že existuje spoustu názorů na to, jaké barvy se nehodí na svatbu. My žádný takový názor nesdílíme. 
+            Není problém si tedy vzít například bílou, červenou, černou, světle modrou, neonově zelenou a vlastně naprosto jakoukoliv.</li>
+            <li>Nejsme fanoušci synchronizovaných a zladěných outfitů. Jsme naopak rádi, když se na výběru Vašeho oblečení odráží Váš osobní vkus a styl. Rádi Vás uvidíme v
+            krátkých i dlouhých šatech, tričkách či blůzkách se sukněmi nebo nohavicemi, nohavicových kostýmech, dámských oblecích nebo jakýchkoliv jiných kreativních výběrech.
+            Stejně tak můžete přijít oblečeni plesově, decentně, moderně, retro, mladistvě, sportově-elegantně, atd.</li>
+            <li>Chápeme, že chcete na fotkách vypadat úchvatně a vaše botky musí ladit s celým vaším outfitem, zvažte ale donesení i druhého páru pohodlnějších bot.
+            Zejména na několika-hodinovém tancováním se Vám to dost vyplatí. Mnohem radši Vás uvidíme tancovat v plesových šatech a reflexních zelených teniskách, než sedět v lodičkách.</li>
+            <li>Pokud máte doma nějaké šaty, co byste si rádi oblékli nebo se Vám nějaké v obchodě zalíbili, ale stále si nejste jisti, zda jsou vážně vhodné, nebojte se nás zeptat. 
+            My Vám povíme, že vhodné jsou a budete si je moci obléci bez stresu. Zejména nechceme, aby si někdo zbytečně kupovat šaty, co již nikdy nepoužije,
+            nebo hledal jiné, pokud už jedny doma má.</li>
+        </ul> 
+    ''')
+    ]
 
     infos['Detaily sálu'] = [
         Information('Domácí mazlíčci', 'Zvířátka, ani malá, náš sál nedovoluje. Děti přivést samozřejmě můžete.'),
