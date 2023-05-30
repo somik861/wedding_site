@@ -24,7 +24,14 @@
         <h3> {{ question.text }} </h3>
         <div style='padding-left:20px'>
         <b>Answers: {{ answers|get_item:question.id|get_len }}</b><br>
-
+        {% if verbose %}
+            <b> Did not answer: </b>
+            <ul>
+                {% for respondent in answers|get_item:question.id|get_missing_respondents %}
+                    <li> <a href="/stats/respondent/{{respondent.id}}/true">{{respondent.full_name}}</a> </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
             {% if question.answer_type == 'rating' %}
                 <p style='padding-left:20px;'>
                 {% for value, count in answers|get_item:question.id|get_counts:question.answer_type %}

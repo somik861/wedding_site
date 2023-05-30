@@ -48,6 +48,11 @@ def get_counts(answers, answer_type):
 
     return [answer_type]
 
+@register.filter
+def get_missing_respondents(answers) -> list[Respondent]:
+    known_ids = set(map(lambda answ: answ.respondent.id, answers))
+    return list(filter(lambda resp: resp.id not in known_ids, Respondent.objects.all()))
+
 
 PASSWD_HASH: bytes = b'd\x13\x83\xda\r\xffa\x1d\x10d\xfbM\xce\xf1]\xeas"\xdf`\xc7\x95\xb2=\xa9\x9dQ\xb2f\x17!\x16\xd24j`\xa8R\xd9]2\xe7Hl\x07\xf4\xa6\x13\xa4\xa79\xd6\xf9Y\x83\x98\x9b\x95\xf7\xdf\xbb?\x00\xe6'
 ANSWERS = [TextAnswer, RatingAnswer, YesNoAnswer, YesNoDcAnswer, AlcoholAnswer]
