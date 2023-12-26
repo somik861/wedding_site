@@ -9,6 +9,7 @@ class Information:
         self.title = title
         self.text = text
 
+
 InfoBlock = str
 
 
@@ -25,26 +26,26 @@ def index(request) -> HttpResponse:
 width="90%" height="40%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>')
     '''),
         Information('Kde bude obřad?', 'Nebojte se žádného přesouvání, obřad bude na tom stejném místě jako hostina.')]
-    
+
     infos['Co na sebe?'] = [Information('Existují jen 4 pravidla', '''
     <ul>
-        <li>Nejdůležitější je, abyste se cítili poholně, mohli tancovat a bavit se.</li>
+        <li>Nejdůležitější je, abyste se cítili pohodlně, mohli tancovat a bavit se.</li>
         <li>Bylo by dobré, kdyby jste se ve svém výběru cítili sebevědomě a měli chuť se s námi vyfotit.</li>
         <li>Dlouhé tylové princeznovské svatební šaty jsou pro všechny kromě nevěsty zakázané.</li>
-        <li>Vemte si alespoň spodní prádlo, abych nepohoršovali zaměstnance a Nastina dědu.</li>
+        <li>Vemte si alespoň spodní prádlo, abychom nepohoršovali zaměstnance a Nastina dědu.</li>
     </ul>
     '''),
-    Information('Dodatečné doporučení', '''
+                            Information('Dodatečné doporučení', '''
     <ul>
         <li>Svatba je sice v květnu, ale sál není úplně největší. Počítejte s tím, že tam bude teplo. Doporučujeme tedy tenčí oblečení, případně něco na přehození, pokud chcete vybíhat na terasu a ven.</li>
         <li>Rádi bychom, abyste se trošku hýbali a tancovali, je proto naprosto v pořádku preferovat pohodlnější obuv. Není samozřejmě problém si Vaše oblíbené botky vzít jen na focení a potom se přezout.</li>
     </ul>
     '''),
-    Information('Bližší detaily - muži', '''
+                            Information('Bližší detaily - muži', '''
         V pořádku jsou obleky a košile všech barev a vzorů. Kravaty a motýlci jsou čistě na vašem uvážení a nejsou nijak vyžadovány. 
         Stejně tak není problém vynechat sako.
     '''),
-    Information('Bližší detaily - ženy', '''
+                            Information('Bližší detaily - ženy', '''
         <ul>
             <li>Víme, že existuje spoustu názorů na to, jaké barvy se nehodí na svatbu. My žádný takový názor nesdílíme. 
             Není problém si tedy vzít například bílou, červenou, černou, světle modrou, neonově zelenou a vlastně naprosto jakoukoliv.</li>
@@ -58,13 +59,14 @@ width="90%" height="40%" style="border:0;" allowfullscreen="" loading="lazy" ref
             nebo hledal jiné, pokud už jedny doma má.</li>
         </ul> 
     ''')
-    ]
+                            ]
 
     infos['Detaily sálu'] = [
-        Information('Domácí mazlíčci', 'Zvířátka, ani malá, náš sál nedovoluje. Děti přivést samozřejmě můžete.'),
+        Information('Domácí mazlíčci',
+                    'Zvířátka, ani malá, náš sál nedovoluje. Děti přivést samozřejmě můžete.'),
         Information('Parkování', '''
         Před sálem se bohužel parkovat nedá. Nicméně není problém na daném místě vystoupit z auta nebo z taxíku. 
-        Hosté cestující z dálných končin budou moci auta nechat před hotelem, kde budou ubytovaní a v případě potřeby dojet k sálu taxíkem (nebojte se, je to kousek).''' ),
+        Hosté cestující z dálných končin budou moci auta nechat před hotelem, kde budou ubytovaní a v případě potřeby dojet k sálu taxíkem (nebojte se, je to kousek).'''),
         Information('Uff schody ...', '''No, i na to jsme mysleli. <br>
 Záchody, obřadní místo i sál s hostinou jsou v přízemí a se schody se tak prakticky nestřetnete.'''),
         Information('Když je potřeba trochu klidu', '''Čas od času si každý potřebuje odpočinout. Nebudeme to brát jako neslušnost. 
@@ -73,7 +75,8 @@ Záchody, obřadní místo i sál s hostinou jsou v přízemí a se schody se ta
 Zdá se Vám to moc komplikované? Nebojte, kdybyste se náhodou chtěli ztratit, odchytnou Vás u dveří rodiče nevěsty.'''),
         Information('Kam si sednout', '''Zasedací pořádek si můžete prohlédnout na <a href="/guests#seats">stránce s hosty</a>. 
         Pokud se nemůžete najít, nepanikařte, zasedací pořádek i seznam hostů průběžně aktualizujeme a brzy Vás přidáme.'''),
-        Information('Co jsem sem neměl podle Nasti dávat?', 'Vedle záchodů je gauč. To je fajn, protože když náhodou bude na záchod fronta, máte si kam sednout \U0001F606.'),
+        Information('Co jsem sem neměl podle Nasti dávat?',
+                    'Vedle záchodů je gauč. To je fajn, protože když náhodou bude na záchod fronta, máte si kam sednout \U0001F606.'),
     ]
 
     infos['Máme dovoleno fotit?'] = [
