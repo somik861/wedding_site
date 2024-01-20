@@ -47,8 +47,47 @@ class RatingAnswer(Answer):
 class YesNoAnswer(Answer):
     value: BooleanField = BooleanField()
 
+
 class YesNoDcAnswer(Answer):
     value: BooleanField = BooleanField(null=True)
 
+
 class AlcoholAnswer(Answer):
     value: IntegerField = IntegerField()
+
+
+class RVSP1(Model):
+    name: CharField = CharField(max_length=255)
+    participation: BooleanField = BooleanField(null=False)
+    # 1: Hotel, 2: Taxi, 3: On their own
+    journey: IntegerField = IntegerField()
+
+
+class RVSP2(Model):
+    name: CharField = CharField(max_length=255)
+    participation_1st: BooleanField = BooleanField(null=False)
+    participation_2nd: BooleanField = BooleanField(null=False)
+    # 1: Hotel, 2: Taxi, 3: On their own
+    journey: IntegerField = IntegerField()
+
+
+class RVSP3(Model):
+    name: CharField = CharField(max_length=255)
+    name_2nd: CharField = CharField(max_length=255)
+    participation_1st: BooleanField = BooleanField(null=False)
+    participation_2nd: BooleanField = BooleanField(null=False)
+    # 1: Hotel, 2: Taxi, 3: On their own
+    journey: IntegerField = IntegerField()
+
+
+class RVSP4(Model):
+    name: CharField = CharField(max_length=255)
+    participation_1st: BooleanField = BooleanField(null=False)
+    participation_2nd: BooleanField = BooleanField(null=False)
+    participation_children: BooleanField = BooleanField(null=False)
+    # 1: Chair, 2: Child chair, 3: No chair
+    children_place: IntegerField = IntegerField()
+    # 1: Normal, 2: Child, 3: None
+    children_food: IntegerField = IntegerField()
+    # 1: Hotel, 2: Taxi, 3: On their own
+    journey: IntegerField = IntegerField()

@@ -1,0 +1,70 @@
+<html>
+
+{{ top_layout | safe}}
+
+<style>
+    #header_survey {
+        color: #F085BE;
+    }
+</style>
+
+<div class='div_body'>
+    <p style='color:red;font-size:150%'> {{ form_error }} </p>
+    <p style='color:green;font-size:150%'> {{ form_success }} </p>
+    <form id="form_1" method='POST'>
+        {% csrf_token %}
+        <h2> {{ name }} </h2>
+
+        <h3>{{ name1 }} se zúčastní:</h3>
+        <label for="participation1_yes">Ano</label>
+        <input id="participation1_yes" type="radio" value="yes" name="participation1" 
+            {% if data_participation1 == "yes" %} 
+            checked="checked"
+            {% endif %}
+        >&nbsp&nbsp&nbsp
+        <label for="participation1_no">Ne</label>
+        <input id="participation1_no" type="radio" value="no" name="participation1" 
+        {% if data_participation1 == "no" %} 
+            checked="checked" 
+        {% endif %}
+        > <br> <br>
+
+        <h3>{{ name2 }} se zúčastní:</h3>
+        <label for="participation2_yes">Ano</label>
+        <input id="participation2_yes" type="radio" value="yes" name="participation2" 
+            {% if data_participation2 == "yes" %} 
+            checked="checked"
+            {% endif %}
+        >&nbsp&nbsp&nbsp
+        <label for="participation2_no">Ne</label>
+        <input id="participation2_no" type="radio" value="no" name="participation2" 
+        {% if data_participation2 == "no" %} 
+            checked="checked" 
+        {% endif %}
+        > <br> <br>
+
+
+        <h3>Potřebujeme zařídit:</h3>
+        <label for="journey_1">Taxi</label>
+        <input id="journey_1" type="radio" value="1" name="journey" {% if data_journey == "1" %}
+            checked='checked' {% endif %}>&nbsp&nbsp&nbsp
+        <label for="journey_2">Hotel</label>
+        <input id="journey_2" type="radio" value="2" name="journey"  {% if data_journey == "2" %}
+        checked='checked' {% endif %}>&nbsp&nbsp&nbsp
+        <label for="journey_3">Nic</label>
+        <input id="journey_3" type="radio" value="3" name="journey"
+        {% if data_journey == "3" %}
+        checked='checked' {% endif %}> <br> (Není potřeba vyplnit, pokud se ani jeden neúčastníte) <br> <br> <br>
+
+        <input type='submit' value='Odeslat' name='send'>
+    </form>
+</div>
+
+<div style='height: 20%;'>
+</div>
+
+<div style='margin-left: auto; margin-right: auto; text-align: center;'>
+    <img src='/static/top_layout/rose02.png' style='width: 75px;'>
+</div>
+
+</html>

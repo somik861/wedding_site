@@ -1,0 +1,24 @@
+<html>
+
+{{ top_layout | safe}}
+
+<style>
+    #header_survey{
+        color: #F085BE;
+    }
+</style>
+
+<div class='div_body'>
+{% for entity in entities %}
+    <a href="/survey/rvsp/{{ entity }}" style='text-decoration: none; font-size: 150%;'> {{ entity }} </a><br>
+{% endfor %}
+</div>
+
+<div style='height: 20%;'>
+</div>
+
+<div style='margin-left: auto; margin-right: auto; text-align: center;'>
+    <img src='/static/top_layout/rose02.png' style='width: 75px;'>
+</div>
+
+</html>
