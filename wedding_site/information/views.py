@@ -32,7 +32,6 @@ width="90%" height="40%" style="border:0;" allowfullscreen="" loading="lazy" ref
         <li>Nejdůležitější je, abyste se cítili pohodlně, mohli tancovat a bavit se.</li>
         <li>Bylo by dobré, kdyby jste se ve svém výběru cítili sebevědomě a měli chuť se s námi vyfotit.</li>
         <li>Dlouhé tylové princeznovské svatební šaty jsou pro všechny kromě nevěsty zakázané.</li>
-        <li>Vemte si alespoň spodní prádlo, abychom nepohoršovali zaměstnance a Nastina dědu.</li>
     </ul>
     '''),
                             Information('Dodatečné doporučení', '''
