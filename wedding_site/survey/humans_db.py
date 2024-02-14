@@ -1,8 +1,8 @@
 RSVP_TYPE_1 = {'Dagmar Kovářová',
                'Josef Juráček',
+               'Ľubica Köpplová'
                }
 RSVP_TYPE_2 = {'Jana Kovářová + Boris Kovář',
-               'Ľubica Köpplová + Jozef Köppl',
                'Róbert Köppl st. + Janka Köpplová',
                'Tomáš Köppl st. + Milena Köpplová',
                'Dominika Köpplová + Roman Szimet',
