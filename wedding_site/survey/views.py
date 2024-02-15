@@ -341,7 +341,7 @@ def rvsp_quest(request, name: str) -> HttpResponse:
             # at least one
             if len(err) == 0 and 'yes' in {
                     data['participation1'], data['participation2'], data['participation3']}:
-                if part_atleast_1 and 'journey' not in data:
+                if 'journey' not in data:
                     err = 'Nezapomeňte nám dát prosím vědět, zda potřebujete něco zařídit'
 
             # children are coming
@@ -355,8 +355,8 @@ def rvsp_quest(request, name: str) -> HttpResponse:
                 rvsp.participation_1st = data['participation1'] == 'yes'
                 rvsp.participation_2nd = data['participation2'] == 'yes'
                 rvsp.participation_children = data['participation3'] == 'yes'
-                rvsp.children_place = int(data.get('child_chair'), '0')
-                rvsp.children_food = int(data.get('child_food'), '0')
+                rvsp.children_place = int(data.get('child_chair', '0'))
+                rvsp.children_food = int(data.get('child_food', '0'))
                 rvsp.journey = int(data.get('journey', '0'))
 
                 rvsp.save()
@@ -367,7 +367,3 @@ def rvsp_quest(request, name: str) -> HttpResponse:
         return render(request, 'survey/rvsp_4.html', context)
 
     raise Http404
-
-
-def save_rvsp(name: str, data: dict[str, Any]) -> None:
-    pass
