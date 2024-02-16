@@ -273,7 +273,7 @@ def rvsp_quest(request, name: str) -> HttpResponse:
             rvsp = RVSP3.objects.get(name=name)
             context['data_participation1'] = 'yes' if rvsp.participation_1st else 'no'
             context['data_participation2'] = 'yes' if rvsp.participation_2nd else 'no'
-            context['2nd_name'] = rvsp.name_2nd
+            context['data_2nd_name'] = rvsp.name_2nd
             context['data_journey'] = str(rvsp.journey)
         except RVSP3.DoesNotExist:
             rvsp = RVSP3(name=name, participation_1st=False,
